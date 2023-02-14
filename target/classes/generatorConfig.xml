@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN" "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+    <!--targetRuntime:逆向工程的版本信息-->
+    <context id="DB2Tables" targetRuntime="MyBatis3">
+        <!-- 数据库的连接 -->
+        <jdbcConnection driverClass="com.mysql.cj.jdbc.Driver"
+                        connectionURL="jdbc:mysql://localhost:3306/Blog"
+                        userId="root"
+                        password="root">
+        </jdbcConnection>
+        <!-- javaBean-->
+        <javaModelGenerator targetPackage="com.Blog.pojo" targetProject=".\src\main\java">
+            <property name="enableSubPackages" value="true" />
+            <property name="trimStrings" value="true" />
+        </javaModelGenerator>
+        <!-- SQL映射文件 -->
+        <sqlMapGenerator targetPackage="Mapper" targetProject=".\src\main\resources">
+            <property name="enableSubPackages" value="true" />
+        </sqlMapGenerator>
+        <!-- Mapper接口 -->
+        <javaClientGenerator type="XMLMAPPER" targetPackage="com.Blog.dao"   targetProject=".\src\main\java">
+            <property name="enableSubPackages" value="true" />
+        </javaClientGenerator>
+        <!-- 数据库表 -->
+        <!-- tableName设置为*号，可以对应所有表，此时不写domainObjectName -->
+        <!-- domainObjectName属性指定生成出来的实体类的类名 -->
+<!--        <table tableName="tbl_user" domainObjectName="UserEntity"/>-->
+        <table tableName="*" />
+    </context>
+</generatorConfiguration>
