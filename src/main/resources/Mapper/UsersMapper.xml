@@ -2,9 +2,16 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.Blog.dao.UsersMapper">
   <resultMap id="BaseResultMap" type="com.Blog.pojo.Users">
-    <result column="user_Id" jdbcType="CHAR" property="userId" />
-    <result column="user_name" jdbcType="BIGINT" property="userName" />
-    <result column="user_nickName" jdbcType="BIGINT" property="userNickName" />
+    <result column="user_Id" jdbcType="BIGINT" property="userId" />
+    <result column="user_name" jdbcType="CHAR" property="userName" />
+    <result column="user_nickName" jdbcType="CHAR" property="userNickname" />
+    <result column="pwd" jdbcType="CHAR" property="pwd" />
+    <result column="email" jdbcType="CHAR" property="email" />
+    <result column="avatar" jdbcType="CHAR" property="avatar" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="birthday" jdbcType="DATE" property="birthday" />
+    <result column="age" jdbcType="INTEGER" property="age" />
+    <result column="moble_phone" jdbcType="CHAR" property="moblePhone" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -67,18 +74,10 @@
   <sql id="Base_Column_List">
 
   </sql>
-  <select id="selectByExample" parameterType="com.Blog.pojo.UsersExample" resultMap="BaseResultMap">
-    select
-    <if test="distinct">
-      distinct
-    </if>
-    <include refid="Base_Column_List" />
-    from users
-    <if test="_parameter != null">
-      <include refid="Example_Where_Clause" />
-    </if>
-    <if test="orderByClause != null">
-      order by ${orderByClause}
+  <select id="selectById" parameterType="integer" resultMap="BaseResultMap">
+    select * from users
+    <if test="_parameter">
+      where users.user_Id = #{_parameter}
     </if>
   </select>
   <delete id="deleteByExample" parameterType="com.Blog.pojo.UsersExample">

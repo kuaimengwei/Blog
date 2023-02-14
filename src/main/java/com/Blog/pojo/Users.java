@@ -3,6 +3,7 @@ package com.Blog.pojo;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -29,7 +30,7 @@ public class Users implements Serializable {
     private String avatar;
 
     @ApiModelProperty(value="用户生日",name="birthday")
-    @JsonFormat(pattern = "yyyy-MM-dd",timezone="GMT+8")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date birthday;
 
     @ApiModelProperty(value="用户年龄",name="age")

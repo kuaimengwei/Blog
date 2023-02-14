@@ -4,9 +4,11 @@ import com.Blog.dao.UsersMapper;
 import com.Blog.pojo.Users;
 import com.Blog.pojo.UsersExample;
 import com.Blog.service.UserService;
+import org.apache.ibatis.annotations.Param;
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Service;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -30,8 +32,10 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public int insert(Users user) {
-
-        user.setCreateTime();
+        //获取系统当前时间
+        //TimeStamp timeStamp=new TimeStamp(new Date.getTime)
+        Date date=new Date();
+        user.setCreateTime(date);
         logger.info("UserServiceImpl --> user"+ user);
         return usersMapper.insert(user);
     }
@@ -53,8 +57,11 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public List<Users> selectByExample(UsersExample example) {
-        return null;
+    public Users selectById(Integer userid) {
+        logger.info("UserServiceImpl/selectById -->userid:"+userid);
+        Users users = usersMapper.selectById(userid);
+        logger.info("usersMapper.selectById -->"+users);
+        return users;
     }
 
     @Override

@@ -16,7 +16,7 @@ public interface UsersMapper {
 
     int insertSelective(Users record);
 
-    List<Users> selectByExample(UsersExample example);
+    Users selectById(Integer userid);
 
     int updateByExampleSelective(@Param("record") Users record, @Param("example") UsersExample example);
 

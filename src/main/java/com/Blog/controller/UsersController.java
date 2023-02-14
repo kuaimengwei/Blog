@@ -32,14 +32,21 @@ public class UsersController {
     @PostMapping("/insert")
     @ApiOperation("添加用户")
     public int insert(Users user){
-        logger.info("UsersController --> user"+ user);
+        logger.info("UsersController/insert --> user"+ user);
         return userService.insert(user);
     }
 
-    @GetMapping("/selectByExample")
+    @GetMapping("/selectById")
     @ApiOperation("示例查询")
-    public List<Users> selectByExample(UsersExample example){
-        return userService.selectByExample(example);
+    public Users selectById(Integer userid){
+        if (userid != null){
+            logger.info("UsersController/selectById -->userid"+userid);
+            return userService.selectById(userid);
+        }
+        else {
+            logger.info("UsersController/selectById -->userid为空");
+            return null;
+        }
     }
 
     @GetMapping("/countByExample")

@@ -1303,7 +1303,7 @@ sys|schema||mysql.sys|localhost|TRIGGER|G</Grants>
       <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
     </key>
     <column id="348" parent="295" name="user_Id">
-      <AutoIncrement>1</AutoIncrement>
+      <AutoIncrement>2</AutoIncrement>
       <Comment>用户ID</Comment>
       <DasType>bigint|0s</DasType>
       <NotNull>1</NotNull>
