@@ -24,8 +24,9 @@ public class UserServiceImpl implements UserService {
         this.usersMapper = usersMapper;
     }
 
-    @Override
+    @Override//插入
     public int insert(Users user) {
+        logger.info("UserServiceImpl --> insert");
         //获取系统当前时间
         //TimeStamp timeStamp=new TimeStamp(new Date.getTime)
         Date date=new Date();
@@ -34,37 +35,44 @@ public class UserServiceImpl implements UserService {
         return usersMapper.insert(user);
     }
 
-    @Override
+    @Override//按示例计数
     public long countByExample(UsersExample example) {
-        return 0;
+        logger.info("UserServiceImpl --> countByExample");
+        long countByExample = usersMapper.countByExample(example);
+        logger.info("UserServiceImpl --> countByExample:"+ countByExample);
+        return countByExample;
     }
 
-    @Override
+    @Override//按示例删除
     public int deleteByExample(UsersExample example) {
-        return 0;
+        logger.info("UserServiceImpl --> deleteByExample");
+        return usersMapper.deleteByExample(example);
     }
 
 
-    @Override
-    public int insertSelective(Users record) {
-        return 0;
+    @Override//选择性插入
+    public int insertSelective(Users users) {
+        logger.info("UserServiceImpl --> insertSelective");
+        return usersMapper.insertSelective(users);
     }
 
-    @Override
+    @Override//根据id查询
     public Users selectById(Integer userid) {
-        logger.info("UserServiceImpl/selectById -->userid:"+userid);
+        logger.info("UserServiceImpl --> selectById -->userid:"+userid);
         Users users = usersMapper.selectById(userid);
         logger.info("usersMapper.selectById -->"+users);
         return users;
     }
 
-    @Override
+    @Override//按示例选择性更新
     public int updateByExampleSelective(Users record, UsersExample example) {
-        return 0;
+        logger.info("UserServiceImpl --> updateByExampleSelective");
+        return usersMapper.updateByExampleSelective(record,example);
     }
 
-    @Override
+    @Override //按示例更新
     public int updateByExample(Users record, UsersExample example) {
-        return 0;
+        logger.info("UserServiceImpl --> updateByExample");
+        return usersMapper.updateByExample(record,example);
     }
 }

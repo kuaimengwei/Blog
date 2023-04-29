@@ -6,9 +6,9 @@ spring:
     name: demo
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://121.199.16.61:3306/Blog?useUnicode=true&characterEncoding=utf-8
+    url: jdbc:mysql://localhost:3306/Blog?useUnicode=true&characterEncoding=utf-8
     username: root
-    password: 123456
+    password: root
   devtools:
     restart:
       enabled: true  #设置开启热部署

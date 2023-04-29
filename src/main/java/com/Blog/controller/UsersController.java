@@ -52,32 +52,32 @@ public class UsersController {
     @GetMapping("/countByExample")
     @ApiOperation("示例计数")
     public long countByExample(UsersExample example){
-        return 0;
+        return userService.countByExample(example);
     }
 
     @DeleteMapping("/deleteByExample")
     @ApiOperation("示例删除")
     public int deleteByExample(UsersExample example){
-        return 0;
+        return userService.deleteByExample(example);
     }
 
 
     @GetMapping("/insertSelective")
     @ApiOperation("示例插入")
     public int insertSelective(Users record){
-        return 0;
+        return userService.insertSelective(record);
     }
 
 
     @PutMapping("/updateByExampleSelective")
     @ApiOperation("示例更新条件")
     public int updateByExampleSelective(@Param("record") Users record, @Param("example") UsersExample example){
-        return 0;
+        return userService.updateByExampleSelective(record,example);
     }
 
     @PutMapping("/updateByExample")
     @ApiOperation("示例更新")
     int updateByExample(@Param("record") Users record, @Param("example") UsersExample example){
-        return 0;
+        return userService.updateByExample(record,example);
     }
 }

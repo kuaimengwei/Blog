@@ -144,6 +144,24 @@
     </if>
   </update>
 
+  <update id="updateByExample" parameterType="map">
+    update users
+    <set>
+      <if test="record.user != null">
+        USER = #{record.user,jdbcType=CHAR},
+      </if>
+      <if test="record.currentConnections != null">
+        CURRENT_CONNECTIONS = #{record.currentConnections,jdbcType=BIGINT},
+      </if>
+      <if test="record.totalConnections != null">
+        TOTAL_CONNECTIONS = #{record.totalConnections,jdbcType=BIGINT},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+
 
   <sql id="Example_Where_Clause1">
     <where>
